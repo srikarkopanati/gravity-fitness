@@ -91,6 +91,16 @@ Visit: http://127.0.0.1:8000
 
 ---
 
+Add sample classes via Django Admin
+Navigate to:
+http://127.0.0.1:8000/admin/
+and add entries like:
+
+Name	Instructor	Date/Time (IST)	Slots
+Yoga	Priya Sharma	2025-06-10 07:00:00+05:30	15
+Zumba	Alex Brown	2025-06-11 18:00:00+05:30	10
+HIIT	John Miller	2025-06-12 08:00:00+05:30	8
+
 ## 🕐 Timezone Management
 
 ### Why?
