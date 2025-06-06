@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Booking | Gravity Fitness{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  {% if message %}
+    <div id="booking-alert" class="alert alert-info text-center">
+      {{ message }}
+    </div>
+    <script>
+      setTimeout(function() {
+        const alertBox = document.getElementById('booking-alert');
+        if (alertBox) {
+          alertBox.style.display = 'none';
+        }
+      }, 5000);
+    </script>
+  {% endif %}
+
+  <h2>Booking Details for "{{ fitness_class.name }}"</h2>
+  <p><strong>Date & Time:</strong> {{ fitness_class.datetime }}</p>
+  <p><strong>Available Slots:</strong> {{ fitness_class.available_slots }}</p>
+
+  {% if already_booked %}
+    <div class="alert alert-success mt-3 text-center">✅ You’ve already booked this class.</div>
+  {% else %}
+    <form method="post" action="{% url 'book_class' fitness_class.id %}">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" name="name" class="form-control" id="name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Phone Number</label>
+        <input
+          type="tel"
+          name="phone"
+          class="form-control"
+          id="phone"
+          required
+          pattern="^\+91[6-9]\d{9}$|^[6-9]\d{9}$"
+          title="Phone number must be 10 digits starting with 6-9, with or without +91"
+          placeholder="Enter 10-digit number or +91XXXXXXXXXX"
+        >
+      </div>
+
+      <div class="mb-3">
+        <label for="days" class="form-label">How many days will you attend?</label>
+        <input type="number" name="days" class="form-control" id="days" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Confirm Booking</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

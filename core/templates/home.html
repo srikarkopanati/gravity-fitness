@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home | Gravity Fitness{% endblock %}
+
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-4 fw-bold">Welcome to <span class="text-primary">Gravity Fitness</span>!</h1>
+  <p class="lead mt-3">
+    Join our community for a healthy body and mind. We offer Yoga, Zumba, HIIT, Pilates, and more — all led by expert instructors in a motivating environment.
+  </p>
+
+  <!-- Scrolling Marquee -->
+  <div class="my-4">
+    <marquee behavior="scroll" direction="left" scrollamount="8" class="text-danger fs-5">
+      🔥 Bookings are filling up fast! Reserve your spot today and transform your fitness journey! 🔥
+    </marquee>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="mt-5">
+    <a href="/classes/" class="btn btn-lg btn-success px-4 py-2">📅 View Available Classes</a>
+  </div>
+</div>
+
+<!-- Local Hero Image
+<div class="container-fluid mt-5 p-0">
+  <img src="{% static 'images/classes/fitness_banner.jpg' %}" class="img-fluid w-100 rounded" alt="Fitness Banner">
+</div> -->
+
+{% endblock %}

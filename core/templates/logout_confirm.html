@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Logout | Gravity Fitness{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+  <h2 class="mb-4 text-danger">Are you sure you want to logout?</h2>
+  <p class="mb-4">Thank you for visiting Gravity Fitness. Come back soon for your next session!</p>
+  
+  <p><strong>Our Address:</strong><br>
+     Gravity Fitness Center,<br>
+     123 Wellness Avenue,<br>
+     Hyderabad, India</p>
+
+  <form method="post" action="{% url 'logout_confirm' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger btn-lg">Confirm Logout</button>
+    <a href="{% url 'classes' %}" class="btn btn-secondary btn-lg ms-3">⬅️ Cancel</a>
+  </form>
+</div>
+{% endblock %}

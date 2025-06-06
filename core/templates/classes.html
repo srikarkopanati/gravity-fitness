@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Available Classes{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Upcoming Fitness Classes</h2>
+
+<style>
+  .equal-height-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .equal-height-card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+</style>
+
+<div class="row">
+  {% for c in classes %}
+    <div class="col-md-4 mb-4 d-flex">
+      <div class="card equal-height-card w-100 shadow-sm">
+        {% with 'images/classes/'|add:c.name|add:'.jpeg' as image_path %}
+          <img src="{% static image_path %}?v={{ c.id }}" class="card-img-top" alt="{{ c.name }}"
+               onerror="this.src='https://source.unsplash.com/400x200/?fitness,{{ c.name }}';">
+        {% endwith %}
+        <div class="card-body equal-height-card-body">
+          <div>
+            <h5 class="card-title">{{ c.name }}</h5>
+            <p><strong>Instructor:</strong> {{ c.instructor }}</p>
+            <p><strong>Date & Time:</strong> {{ c.datetime }}</p>
+            <p><strong>Available Slots:</strong> {{ c.available_slots }}</p>
+          </div>
+          <div>
+            {% if c.id in booked_class_ids %}
+              <span class="btn btn-success w-100" disabled>Booked</span>
+            {% elif c.available_slots > 0 %}
+              <a href="{% url 'book_class' c.id %}" class="btn btn-primary w-100">Book Now</a>
+            {% else %}
+              <span class="btn btn-secondary w-100" disabled>Full</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}My Bookings{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">📋 My Bookings</h2>
+
+{% if bookings %}
+<div class="row">
+  {% for booking in bookings %}
+    <div class="col-md-4 mb-4 d-flex">
+      <div class="card w-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ booking.fitness_class.name }}</h5>
+          <p class="card-text"><strong>Date & Time:</strong> {{ booking.fitness_class.datetime }}</p>
+          <p class="card-text"><strong>Instructor:</strong> {{ booking.fitness_class.instructor }}</p>
+          <p class="card-text text-muted small">Booking ID: #{{ booking.id }}</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% else %}
+  <div class="alert alert-info text-center">
+    You have no bookings yet. <a href="{% url 'classes' %}">Browse classes</a> to get started!
+  </div>
+{% endif %}
+{% endblock %}
