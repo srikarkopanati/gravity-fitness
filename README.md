@@ -3,7 +3,7 @@
 
 A Django-based web application for booking fitness classes like Yoga, Zumba, and HIIT. It includes user authentication, real-time slot tracking, phone number validation, and intelligent timezone handling.
 
-Took 10 working hours to build this web application
+Took 5 working hours to build this web application
 
 ---
 
