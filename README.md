@@ -30,6 +30,10 @@ Took 5 working hours to build this web application
 - HTML5 / CSS3
 - JavaScript (for timezone detection)
 
+
+
+Note: if you are using SQLite for dev change the docker compose file accordingly
+
 ---
 
 ## 🚀 Getting Started
